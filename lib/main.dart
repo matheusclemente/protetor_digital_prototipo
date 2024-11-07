@@ -35,7 +35,7 @@ class OnBoardingPageState extends State<OnBoardingPage> {
 
   void _onIntroEnd(context) {
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => const HomePage()),
+      MaterialPageRoute(builder: (_) => const ExpansionPanelListScreen()),
     );
   }
 
@@ -134,32 +134,78 @@ class OnBoardingPageState extends State<OnBoardingPage> {
   }
 }
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class ExpansionPanelListScreen extends StatefulWidget {
+  const ExpansionPanelListScreen({super.key});
 
-  void _onBackToIntro(context) {
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => const OnBoardingPage()),
-    );
+  @override
+  State<ExpansionPanelListScreen> createState() => _ExpansionPanelListState();
+}
+
+class _ExpansionPanelListState extends State<ExpansionPanelListScreen> {
+  List<Item> _data = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _data = generateItems(5);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Home')),
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Text("This is the screen after Introduction"),
-            const SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: () => _onBackToIntro(context),
-              child: const Text('Back to Introduction'),
-            ),
-          ],
+      appBar: AppBar(
+        title: const Text('ExpansionPanelList'),
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          margin: const EdgeInsets.all(16.0),
+          child: _buildPanel(),
         ),
       ),
     );
   }
+
+  List<Item> generateItems(int numberOfItems) {
+    return List<Item>.generate(numberOfItems, (int index) {
+      return Item(
+        headerValue: 'Question ${index + 1}',
+        expandedValue: 'Answer ${index + 1}',
+      );
+    });
+  }
+
+  Widget _buildPanel() {
+    return ExpansionPanelList(
+      expansionCallback: (int index, bool isExpanded) {
+        setState(() {
+          _data[index].isExpanded = !isExpanded;
+        });
+      },
+      children: _data.map<ExpansionPanel>((Item item) {
+        return ExpansionPanel(
+          headerBuilder: (BuildContext context, bool isExpanded) {
+            return ListTile(
+              title: Text(item.headerValue),
+            );
+          },
+          body: ListTile(
+            title: Text(item.expandedValue),
+          ),
+          isExpanded: item.isExpanded,
+        );
+      }).toList(),
+    );
+  }
+}
+
+class Item {
+  Item({
+    required this.expandedValue,
+    required this.headerValue,
+    this.isExpanded = false,
+  });
+
+  String expandedValue;
+  String headerValue;
+  bool isExpanded;
 }
