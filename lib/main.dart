@@ -4,7 +4,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:protetor_digital_prototipo/features/cards/cardsscreen.dart';
+import 'package:protetor_digital_prototipo/features/cards/cards_screen.dart';
+import 'package:protetor_digital_prototipo/features/message_analyzer/message_analyzer_screen.dart';
 
 void main() => runApp(const App());
 
@@ -133,7 +134,8 @@ class MainScreen extends StatelessWidget {
         title: const Text('Protetor Digital'),
       ),
       body: Center(
-        child: ElevatedButton(
+          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+        ElevatedButton(
           onPressed: () {
             Navigator.push(
               context,
@@ -142,7 +144,17 @@ class MainScreen extends StatelessWidget {
           },
           child: const Text('Golpes Comuns'),
         ),
-      ),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const MessageAnalyzerScreen()),
+            );
+          },
+          child: const Text('Análise de Mensagens'),
+        )
+      ])),
     );
   }
 }
