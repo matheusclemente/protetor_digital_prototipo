@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:protetor_digital_prototipo/features/cards/cardsscreen.dart';
 
 void main() => runApp(const App());
 
@@ -35,22 +38,8 @@ class OnBoardingPageState extends State<OnBoardingPage> {
 
   void _onIntroEnd(context) {
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => const ExpansionPanelListScreen()),
+      MaterialPageRoute(builder: (_) => const MainScreen()),
     );
-  }
-
-  Widget _buildFullscreenImage() {
-    return Image.asset(
-      'assets/fullscreen.jpg',
-      fit: BoxFit.cover,
-      height: double.infinity,
-      width: double.infinity,
-      alignment: Alignment.center,
-    );
-  }
-
-  Widget _buildImage(String assetName, [double width = 350]) {
-    return Image.asset('assets/$assetName', width: width);
   }
 
   @override
@@ -134,78 +123,26 @@ class OnBoardingPageState extends State<OnBoardingPage> {
   }
 }
 
-class ExpansionPanelListScreen extends StatefulWidget {
-  const ExpansionPanelListScreen({super.key});
-
-  @override
-  State<ExpansionPanelListScreen> createState() => _ExpansionPanelListState();
-}
-
-class _ExpansionPanelListState extends State<ExpansionPanelListScreen> {
-  List<Item> _data = [];
-
-  @override
-  void initState() {
-    super.initState();
-    _data = generateItems(5);
-  }
+class MainScreen extends StatelessWidget {
+  const MainScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ExpansionPanelList'),
+        title: const Text('Protetor Digital'),
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          margin: const EdgeInsets.all(16.0),
-          child: _buildPanel(),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const CardsScreen()),
+            );
+          },
+          child: const Text('Golpes Comuns'),
         ),
       ),
     );
   }
-
-  List<Item> generateItems(int numberOfItems) {
-    return List<Item>.generate(numberOfItems, (int index) {
-      return Item(
-        headerValue: 'Question ${index + 1}',
-        expandedValue: 'Answer ${index + 1}',
-      );
-    });
-  }
-
-  Widget _buildPanel() {
-    return ExpansionPanelList(
-      expansionCallback: (int index, bool isExpanded) {
-        setState(() {
-          _data[index].isExpanded = !isExpanded;
-        });
-      },
-      children: _data.map<ExpansionPanel>((Item item) {
-        return ExpansionPanel(
-          headerBuilder: (BuildContext context, bool isExpanded) {
-            return ListTile(
-              title: Text(item.headerValue),
-            );
-          },
-          body: ListTile(
-            title: Text(item.expandedValue),
-          ),
-          isExpanded: item.isExpanded,
-        );
-      }).toList(),
-    );
-  }
-}
-
-class Item {
-  Item({
-    required this.expandedValue,
-    required this.headerValue,
-    this.isExpanded = false,
-  });
-
-  String expandedValue;
-  String headerValue;
-  bool isExpanded;
 }
