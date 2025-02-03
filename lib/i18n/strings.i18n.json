@@ -1,0 +1,24 @@
+{
+    "introductionScreen": {
+        "title": [
+            "Bem-vindo(a) ao app do Protetor digital!",
+            "Como funciona?\n\nLista de checagem de segurança",
+            "Como funciona?\n\nCartilha de segurança",
+            "Como funciona?\n\nAnálise de mensagens suspeitas"
+        ],
+        "body": [
+            "Aprenda os melhores métodos de prevenção contra os golpistas de forma simples e remota com nosso app.",
+            "Aplique o que aprendeu com listas de tarefas simples e organizadas por temas. Desde identificar e-mails suspeitos até manter suas redes sociais protegidas, você terá tudo o que precisa.",
+            "Descubra tutoriais e informações simples sobre temas como fraudes, phishing, senhas seguras e muito mais. Todo o conteúdo é fácil de entender e feito para  guiar você em um passo a passo.",
+            "Recebeu uma mensagem que parece estranha? Cole o texto aqui e deixe nosso sistema verificar o nível de segurança. Vamos te orientar sobre o que fazer para se proteger."
+        ]
+    },
+
+    "cardsScreen": {
+        "title": "Golpes Comuns"
+    },
+
+    "messageAnalyzerScreen": {
+        "title": "Análise de Mensagens"
+    }
+}
