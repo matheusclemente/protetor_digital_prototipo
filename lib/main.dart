@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:protetor_digital_prototipo/i18n/strings.g.dart';
 import 'package:protetor_digital_prototipo/features/cards/cards_screen.dart';
 import 'package:protetor_digital_prototipo/features/message_analyzer/message_analyzer_screen.dart';
 
@@ -65,27 +66,23 @@ class OnBoardingPageState extends State<OnBoardingPage> {
       ),
       pages: [
         PageViewModel(
-          title: "Bem-vindo(a) ao app do Protetor digital!",
-          body:
-              "Aprenda os melhores métodos de prevenção contra os golpistas de forma simples e remota com nosso app.",
+          title: t.introductionScreen.title[0],
+          body: t.introductionScreen.body[0],
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: "Como funciona?\n\nLista de checagem de segurança",
-          body:
-              "Aplique o que aprendeu com listas de tarefas simples e organizadas por temas. Desde identificar e-mails suspeitos até manter suas redes sociais protegidas, você terá tudo o que precisa.",
+          title: t.introductionScreen.title[1],
+          body: t.introductionScreen.body[1],
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: "Como funciona?\n\nCartilha de segurança",
-          body:
-              "Descubra tutoriais e informações simples sobre temas como fraudes, phishing, senhas seguras e muito mais. Todo o conteúdo é fácil de entender e feito para  guiar você em um passo a passo.",
+          title: t.introductionScreen.title[2],
+          body: t.introductionScreen.body[2],
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: "Como funciona?\n\nAnálise de mensagens suspeitas",
-          body:
-              "Recebeu uma mensagem que parece estranha? Cole o texto aqui e deixe nosso sistema verificar o nível de segurança. Vamos te orientar sobre o que fazer para se proteger.",
+          title: t.introductionScreen.title[3],
+          body: t.introductionScreen.body[3],
           decoration: pageDecoration,
         ),
       ],
@@ -140,7 +137,7 @@ class MainScreen extends StatelessWidget {
               MaterialPageRoute(builder: (context) => const CardsScreen()),
             );
           },
-          child: const Text('Golpes Comuns'),
+          child: Text(t.cardsScreen.title),
         ),
         ElevatedButton(
           onPressed: () {
@@ -150,7 +147,7 @@ class MainScreen extends StatelessWidget {
                   builder: (context) => const MessageAnalyzerScreen()),
             );
           },
-          child: const Text('Análise de Mensagens'),
+          child: Text(t.messageAnalyzerScreen.title),
         )
       ])),
     );
