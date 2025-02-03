@@ -17,7 +17,7 @@ class App extends StatelessWidget {
     );
 
     return MaterialApp(
-      title: 'Introduction screen',
+      title: 'Protetor Digital',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue, useMaterial3: true),
       home: const OnBoardingPage(),
