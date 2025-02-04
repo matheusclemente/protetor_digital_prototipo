@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:protetor_digital_prototipo/i18n/strings.g.dart';
 import 'package:protetor_digital_prototipo/features/cards/card_details_screen.dart';
 
 class CardsScreen extends StatelessWidget {
@@ -11,15 +12,17 @@ class CardsScreen extends StatelessWidget {
       ),
       body: Center(
         child: ListView.separated(
-          itemCount: 6,
+          itemCount: t.cardsScreen.details.length,
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
-              title: const Text("Titulo"),
+              title: Text(t.cardsScreen.details[index].title),
               onTap: () {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const CardDetailsScreen()));
+                        builder: (context) => CardDetailsScreen(
+                              cardIndex: index,
+                            )));
               },
             );
           },

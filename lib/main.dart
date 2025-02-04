@@ -66,23 +66,23 @@ class OnBoardingPageState extends State<OnBoardingPage> {
       ),
       pages: [
         PageViewModel(
-          title: t.introductionScreen.title[0],
-          body: t.introductionScreen.body[0],
+          title: t.introductionScreen.page[0].title,
+          body: t.introductionScreen.page[0].body,
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: t.introductionScreen.title[1],
-          body: t.introductionScreen.body[1],
+          title: t.introductionScreen.page[1].title,
+          body: t.introductionScreen.page[1].body,
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: t.introductionScreen.title[2],
-          body: t.introductionScreen.body[2],
+          title: t.introductionScreen.page[2].title,
+          body: t.introductionScreen.page[2].body,
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: t.introductionScreen.title[3],
-          body: t.introductionScreen.body[3],
+          title: t.introductionScreen.page[3].title,
+          body: t.introductionScreen.page[3].body,
           decoration: pageDecoration,
         ),
       ],
