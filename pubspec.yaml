@@ -41,6 +41,9 @@ dependencies:
   slang: ^3.29.0
   slang_flutter: ^3.29.0
 
+  # A Flutter plugin for launching a URL.
+  url_launcher: ^6.2.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
