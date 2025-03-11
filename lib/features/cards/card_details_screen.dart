@@ -14,9 +14,29 @@ class CardDetailsScreen extends StatelessWidget {
       ),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Text(t.cardsScreen.details[cardIndex].body.join("\n\n")),
-        ),
+            padding: const EdgeInsets.all(20.0),
+            child: SingleChildScrollView(
+              child: Column(children: [
+                for (final cardText in t.cardsScreen.details[cardIndex].text)
+                  RichText(
+                    text: TextSpan(
+                      text: cardText.header + '\n',
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                      children: <TextSpan>[
+                        for (final cardTextBody in cardText.body)
+                          TextSpan(
+                              text: "• $cardTextBody\n",
+                              style: const TextStyle(
+                                fontWeight: FontWeight.normal,
+                              )),
+                      ],
+                    ),
+                  )
+              ]),
+            )),
       ),
     );
   }

@@ -130,7 +130,7 @@ class MainScreen extends StatelessWidget {
         title: const Text('Protetor Digital'),
       ),
       body: Center(
-          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         ElevatedButton(
           onPressed: () {
             Navigator.push(
