@@ -6,6 +6,7 @@ import 'package:protetor_digital_prototipo/i18n/strings.g.dart';
 import 'package:protetor_digital_prototipo/features/cards/cards_screen.dart';
 import 'package:protetor_digital_prototipo/features/message_analyzer/message_analyzer_screen.dart';
 import 'package:protetor_digital_prototipo/features/useful_links/useful_links_screen.dart';
+import 'package:protetor_digital_prototipo/features/checklists/checklist_screen.dart';
 
 void main() => runApp(const App());
 
@@ -139,6 +140,15 @@ class MainScreen extends StatelessWidget {
             );
           },
           child: Text(t.cardsScreen.title),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const ChecklistScreen()),
+            );
+          },
+          child: const Text("Checklists"),
         ),
         ElevatedButton(
           onPressed: () {
