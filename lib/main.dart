@@ -22,8 +22,13 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'Protetor Digital',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.blue, useMaterial3: true),
       home: const OnBoardingPage(),
+      theme: ThemeData(
+          primarySwatch: Colors.blue,
+          useMaterial3: true,
+          appBarTheme: const AppBarTheme(
+              backgroundColor: Colors.deepPurple,
+              foregroundColor: Colors.white)),
     );
   }
 }
