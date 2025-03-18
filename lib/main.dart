@@ -24,11 +24,14 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: const OnBoardingPage(),
       theme: ThemeData(
-          primarySwatch: Colors.blue,
-          useMaterial3: true,
-          appBarTheme: const AppBarTheme(
-              backgroundColor: Colors.deepPurple,
-              foregroundColor: Colors.white)),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.deepPurple,
+        ),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.deepPurple,
+          foregroundColor: Colors.white,
+        ),
+      ),
     );
   }
 }
@@ -129,6 +132,9 @@ class OnBoardingPageState extends State<OnBoardingPage> {
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
 
+  final buttonTextStyle = const TextStyle(
+      fontWeight: FontWeight.bold, fontSize: 18, color: Colors.white);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -136,46 +142,99 @@ class MainScreen extends StatelessWidget {
         title: const Text('Protetor Digital'),
       ),
       body: Center(
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const CardsScreen()),
-            );
-          },
-          child: Text(t.cardsScreen.title),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const CardsScreen()),
+                    );
+                  },
+                  child: Container(
+                    alignment: Alignment.center,
+                    width: 200,
+                    height: 125,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).primaryColor,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Text(t.cardsScreen.title, style: buttonTextStyle),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ChecklistScreen()),
+                    );
+                  },
+                  child: Container(
+                    alignment: Alignment.center,
+                    width: 200,
+                    height: 125,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).primaryColor,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Text("Checklists", style: buttonTextStyle),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const MessageAnalyzerScreen()),
+                    );
+                  },
+                  child: Container(
+                    alignment: Alignment.center,
+                    width: 200,
+                    height: 125,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).primaryColor,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Text(t.messageAnalyzerScreen.title,
+                        style: buttonTextStyle),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const UsefulLinksScreen()),
+                    );
+                  },
+                  child: Container(
+                    alignment: Alignment.center,
+                    width: 200,
+                    height: 125,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).primaryColor,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Text("Sites Úteis", style: buttonTextStyle),
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const ChecklistScreen()),
-            );
-          },
-          child: const Text("Checklists"),
-        ),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => const MessageAnalyzerScreen()),
-            );
-          },
-          child: Text(t.messageAnalyzerScreen.title),
-        ),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => const UsefulLinksScreen()),
-            );
-          },
-          child: const Text("Sites Úteis"),
-        )
-      ])),
+      ),
     );
   }
 }
