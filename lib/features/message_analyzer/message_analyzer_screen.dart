@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:protetor_digital_prototipo/i18n/strings.g.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -47,7 +46,7 @@ class _MessageAnalyzerScreenState extends State<MessageAnalyzerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(t.messageAnalyzerScreen.title),
+        title: Text('Analisador de Mensagens'),
       ),
       body: SizedBox.expand(
         child: Padding(

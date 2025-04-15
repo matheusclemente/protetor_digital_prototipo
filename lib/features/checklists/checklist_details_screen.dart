@@ -6,10 +6,10 @@ class ChecklistDetailsScreen extends StatefulWidget {
   final int checklistIndex;
 
   @override
-  State<ChecklistDetailsScreen> createState() => _ChecklistDetailsScreen();
+  State<ChecklistDetailsScreen> createState() => _ChecklistDetailsScreenState();
 }
 
-class _ChecklistDetailsScreen extends State<ChecklistDetailsScreen> {
+class _ChecklistDetailsScreenState extends State<ChecklistDetailsScreen> {
   var isButtonPressed = [false, false, false, false];
 
   @override

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:protetor_digital_prototipo/i18n/strings.g.dart';
+
 import 'package:protetor_digital_prototipo/features/cards/card_details_screen.dart';
 
 class CardsScreen extends StatelessWidget {
@@ -12,10 +12,10 @@ class CardsScreen extends StatelessWidget {
       ),
       body: Center(
         child: ListView.separated(
-          itemCount: t.cardsScreen.details.length,
+          itemCount: 4,
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
-              title: Text(t.cardsScreen.details[index].title),
+              title: Text(['Golpes Bancários', 'Phishing', 'Falsificação de Sites', 'Fraudes em Compras Online'][index]),
               onTap: () {
                 Navigator.push(
                     context,

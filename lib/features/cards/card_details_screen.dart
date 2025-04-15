@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:protetor_digital_prototipo/i18n/strings.g.dart';
 
 class CardDetailsScreen extends StatelessWidget {
   const CardDetailsScreen({super.key, required this.cardIndex});
@@ -8,9 +7,59 @@ class CardDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<Map<String, dynamic>> detalhesCartoes = [
+      {
+        'textos': [
+          {
+            'header': 'Características Principais:',
+            'body': [
+              'Comunicação falsa de instituições financeiras',
+              'Solicitação de dados confidenciais',
+              'Links para sites clonados'
+            ]
+          }
+        ]
+      },
+      {
+        'textos': [
+          {
+            'header': 'Métodos Comuns:',
+            'body': [
+              'E-mails com links maliciosos',
+              'Mensagens SMS falsas',
+              'Chamadas telefônicas suspeitas'
+            ]
+          }
+        ]
+      },
+      {
+        'textos': [
+          {
+            'header': 'Indicadores de Risco:',
+            'body': [
+              'URLs com erros ortográficos',
+              'Sites sem cadeado de segurança',
+              'Formulários suspeitos'
+            ]
+          }
+        ]
+      },
+      {
+        'textos': [
+          {
+            'header': 'Prevenção:',
+            'body': [
+              'Verifique o vendedor antes de comprar',
+              'Desconfie de preços muito baixos',
+              'Use plataformas seguras de pagamento'
+            ]
+          }
+        ]
+      },
+    ];
     return Scaffold(
       appBar: AppBar(
-        title: Text(t.cardsScreen.details[cardIndex].title),
+        title: Text(['Golpes Bancários', 'Phishing', 'Falsificação de Sites', 'Fraudes em Compras Online'][cardIndex]),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -19,24 +68,33 @@ class CardDetailsScreen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                for (final cardText in t.cardsScreen.details[cardIndex].text)
-                  RichText(
-                    text: TextSpan(
-                      text: cardText.header + '\n',
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      ),
-                      children: <TextSpan>[
-                        for (final cardTextBody in cardText.body)
+                for (final cardText in detalhesCartoes[cardIndex]['textos'])
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 20),
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
                           TextSpan(
-                              text: "• $cardTextBody\n",
-                              style: const TextStyle(
-                                fontWeight: FontWeight.normal,
-                              )),
-                      ],
+                            text: cardText['header'] + '\n',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              color: Theme.of(context).textTheme.bodyLarge?.color,
+                            ),
+                          ),
+                          ...cardText['body'].map<TextSpan>((item) => TextSpan(
+                            text: '• $item\n',
+                            style: TextStyle(
+                              fontWeight: FontWeight.normal,
+                              fontSize: 16,
+                              color: Theme.of(context).textTheme.bodyMedium?.color,
+                            ),
+                          )).toList(),
+                        ],
+                      ),
                     ),
-                  )
+                  ),
+                const SizedBox(height: 20),
               ],
             ),
           ),

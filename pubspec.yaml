@@ -30,16 +30,17 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
-  introduction_screen: ^3.1.14
+  introduction_screen: ^3.1.17
 
   # Packages for general string handling.
-  # For more information, see: https://maruf-hassan.medium.com/handling-flutter-internationalization-like-a-pro-699ac2f6d856
-  slang: ^3.29.0
-  slang_flutter: ^3.29.0
 
   # A Flutter plugin for launching a URL.
   url_launcher: ^6.2.1
@@ -56,12 +57,15 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^4.0.0
+  build_runner: ^2.4.15
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
 flutter:
+  generate: true
+
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
