@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Polícia Civil",
+    "description": "Para denúncias de crimes digitais",
+    "phone": "197",
+    "icon_code": "security"
+  },
+  {
+    "name": "Central de Atendimento",
+    "description": "Denúncias de golpes e fraudes",
+    "phone": "151",
+    "icon_code": "report"
+  },
+  {
+    "name": "Banco Central",
+    "description": "Orientação sobre fraudes financeiras",
+    "phone": "145",
+    "icon_code": "attach_money"
+  }
+]

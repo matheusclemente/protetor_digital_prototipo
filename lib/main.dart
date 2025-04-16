@@ -215,7 +215,7 @@ class MainScreen extends StatelessWidget {
                     context,
                     Icons.link,
                     'Sites Úteis',
-                    () => Navigator.push(context, MaterialPageRoute(builder: (_) => const UsefulLinksScreen())),
+                    () => Navigator.push(context, MaterialPageRoute(builder: (_) => UsefulLinksScreen())),
                   ),
                 ],
               ),
