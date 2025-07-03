@@ -1,14 +1,18 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter/services.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:protetor_digital_prototipo/i18n/strings.g.dart';
+
 import 'package:protetor_digital_prototipo/features/cards/cards_screen.dart';
 import 'package:protetor_digital_prototipo/features/message_analyzer/message_analyzer_screen.dart';
 import 'package:protetor_digital_prototipo/features/useful_links/useful_links_screen.dart';
 import 'package:protetor_digital_prototipo/features/checklists/checklist_screen.dart';
 
 void main() => runApp(const App());
+
+const Color primaryColor = Color(0xFF1A365D); // hsl(222.2 47.4% 11.2%)
+const Color secondaryColor = Color(0xFFE2E8F0); // hsl(210 40% 96.1%)
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -25,11 +29,25 @@ class App extends StatelessWidget {
       home: const OnBoardingPage(),
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.deepPurple,
+          seedColor: primaryColor,
+          primary: primaryColor,
+          secondary: secondaryColor,
+          background: Colors.white,
         ),
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.deepPurple,
+        scaffoldBackgroundColor: Colors.white,
+        appBarTheme: AppBarTheme(
+          backgroundColor: primaryColor,
           foregroundColor: Colors.white,
+          iconTheme: IconThemeData(color: Colors.white),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: primaryColor,
+            foregroundColor: Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+          ),
         ),
       ),
     );
@@ -76,23 +94,23 @@ class OnBoardingPageState extends State<OnBoardingPage> {
       ),
       pages: [
         PageViewModel(
-          title: t.introductionScreen.page[0].title,
-          body: t.introductionScreen.page[0].body,
+          title: 'Proteção Contra Golpes',
+          body: 'Aprenda a identificar e prevenir os principais tipos de golpes digitais',
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: t.introductionScreen.page[1].title,
-          body: t.introductionScreen.page[1].body,
+          title: 'Checklists de Segurança',
+          body: 'Verifique se está seguindo todas as práticas recomendadas de segurança',
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: t.introductionScreen.page[2].title,
-          body: t.introductionScreen.page[2].body,
+          title: 'Análise de Mensagens',
+          body: 'Verifique automaticamente mensagens suspeitas recebidas',
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: t.introductionScreen.page[3].title,
-          body: t.introductionScreen.page[3].body,
+          title: 'Recursos Úteis',
+          body: 'Acesso rápido a canais de denúncia e suporte especializado',
           decoration: pageDecoration,
         ),
       ],
@@ -102,7 +120,7 @@ class OnBoardingPageState extends State<OnBoardingPage> {
       nextFlex: 0,
       showBackButton: false,
       baseBtnStyle: ElevatedButton.styleFrom(
-          foregroundColor: Colors.white, backgroundColor: Colors.purple),
+          foregroundColor: Colors.white, backgroundColor: primaryColor),
       next: const Text("Próximo"),
       done: const Text('Vamos começar!',
           style: TextStyle(fontWeight: FontWeight.w600)),
@@ -132,109 +150,134 @@ class OnBoardingPageState extends State<OnBoardingPage> {
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
 
-  final buttonTextStyle = const TextStyle(
-      fontWeight: FontWeight.bold, fontSize: 18, color: Colors.white);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Protetor Digital'),
+        title: const Text('Digital Shield'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      body: Column(
+        children: [
+          Container(
+            color: Theme.of(context).primaryColor,
+            padding: const EdgeInsets.all(8),
+            child: Column(
               children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const CardsScreen()),
-                    );
-                  },
-                  child: Container(
-                    alignment: Alignment.center,
-                    width: 200,
-                    height: 125,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Text(t.cardsScreen.title, style: buttonTextStyle),
+                Text(
+                  'Stay safe online',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ChecklistScreen()),
-                    );
-                  },
-                  child: Container(
-                    alignment: Alignment.center,
-                    width: 200,
-                    height: 125,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Text("Checklists", style: buttonTextStyle),
+                const SizedBox(height: 8),
+                Text(
+                  'Aprenda a se proteger de golpes digitais',
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.9),
+                    fontSize: 16
                   ),
+                  textAlign: TextAlign.center,
                 ),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const MessageAnalyzerScreen()),
-                    );
-                  },
-                  child: Container(
-                    alignment: Alignment.center,
-                    width: 200,
-                    height: 125,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Text(t.messageAnalyzerScreen.title,
-                        style: buttonTextStyle),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(8),
+              child: GridView.count(
+                crossAxisCount: 2,
+                childAspectRatio: 0.85,
+                mainAxisSpacing: 12,
+                crossAxisSpacing: 12,
+                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                children: [
+                  _buildFeatureCard(
+                    context,
+                    Icons.article,
+                    'Cartões Educativos',
+                    () => Navigator.push(context, MaterialPageRoute(builder: (_) => const CardsScreen())),
                   ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const UsefulLinksScreen()),
-                    );
-                  },
-                  child: Container(
-                    alignment: Alignment.center,
-                    width: 200,
-                    height: 125,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Text("Sites Úteis", style: buttonTextStyle),
+                  _buildFeatureCard(
+                    context,
+                    Icons.checklist,
+                    'Checklists',
+                    () => Navigator.push(context, MaterialPageRoute(builder: (_) => const ChecklistScreen())),
                   ),
-                ),
-              ],
+                  _buildFeatureCard(
+                    context,
+                    Icons.analytics,
+                    'Analisador de Mensagens',
+                    () => Navigator.push(context, MaterialPageRoute(builder: (_) => const MessageAnalyzerScreen())),
+                  ),
+                  _buildFeatureCard(
+                    context,
+                    Icons.link,
+                    'Sites Úteis',
+                    () => Navigator.push(context, MaterialPageRoute(builder: (_) => UsefulLinksScreen())),
+                  ),
+                ],
+              ),
             ),
-          ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildFeatureCard(BuildContext context, IconData icon, String title, VoidCallback onTap) {
+    return Card(
+      elevation: 2,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(8),
+        hoverColor: Colors.grey.withOpacity(0.1),
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(icon, size: 40, color: Theme.of(context).primaryColor),
+              const SizedBox(height: 12),
+              Text(
+                title,
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                  color: Theme.of(context).primaryColor
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 8),
+              Text(
+                _getDescription(title),
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.grey[600],
+                  height: 1.4
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
         ),
       ),
     );
+  }
+
+  String _getDescription(String title) {
+    switch (title) {
+      case 'Cartões Educativos':
+        return 'Aprenda sobre golpes comuns';
+      case 'Checklists':
+        return 'Verifique se está seguindo todas as práticas recomendadas de segurança';
+      case 'Analisador de Mensagens':
+        return 'Analise mensagens em busca de padrões suspeitos';
+      case 'Sites Úteis':
+        return 'Obtenha ajuda quando necessário';
+      default:
+        return '';
+    }
   }
 }
