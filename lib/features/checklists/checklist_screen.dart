@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:protetor_digital_prototipo/features/checklists/checklist_details_screen.dart';
+import 'package:protetor_digital_prototipo/features/checklists/models/safe_message_checklist.dart';
 
 class ChecklistScreen extends StatelessWidget {
   const ChecklistScreen({super.key});
@@ -19,7 +19,7 @@ class ChecklistScreen extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => ChecklistDetailsScreen(
+                        builder: (context) => SafeMessageChecklistScreen(
                               checklistIndex: index,
                             )));
               },
