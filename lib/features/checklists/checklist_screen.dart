@@ -11,7 +11,7 @@ class ChecklistScreen extends StatelessWidget {
       ),
       body: Center(
         child: ListView.separated(
-          itemCount: 6,
+          itemCount: 1,
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
               title: Text("Checklist $index"),

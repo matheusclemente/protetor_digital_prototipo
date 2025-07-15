@@ -35,7 +35,8 @@ class _SafeMessageChecklistScreenState
         'VALIDE seu WEBMAIL'
       ],
       [
-        'Mensagem segura',
+        'BB: NINGUEM do BB vai te pedir esse codigo. Nao compartilhe',
+        'Gerado codigo para liberacao: XXXX, em xx/xx/xxxx'
       ],
       [
         'Notificação de NF-e',
