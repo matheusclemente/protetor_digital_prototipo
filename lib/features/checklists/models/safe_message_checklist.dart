@@ -54,73 +54,102 @@ class _SafeMessageChecklistScreenState
     ];
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Checklist"),
+        title: const Text("Mensagens Seguras"),
+        elevation: 0,
       ),
       body: Column(
         children: [
-          Text(
-            "Identifique a mensagem segura",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 20,
-              color: Theme.of(context).textTheme.bodyLarge?.color,
+          Container(
+            width: double.infinity,
+            color: Theme.of(context).primaryColor.withOpacity(0.1),
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
+                const Text(
+                  "Identifique a mensagem segura",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 22,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  "Selecione a mensagem que você considera segura",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.grey[700],
+                  ),
+                ),
+              ],
             ),
           ),
           Expanded(
-            child: GridView.count(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: GridView.count(
                 crossAxisCount: 2,
                 childAspectRatio: 0.85,
-                mainAxisSpacing: 12,
-                crossAxisSpacing: 12,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                mainAxisSpacing: 16,
+                crossAxisSpacing: 16,
                 children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            !isButtonPressed[0] ? Colors.grey : Colors.red),
-                    onPressed: () {
-                      setState(() {
-                        isButtonPressed[0] = !isButtonPressed[0];
-                      });
-                    },
-                    child: Text(listaDeMensagens[0].join('\n')),
-                  ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            !isButtonPressed[1] ? Colors.grey : Colors.red),
-                    onPressed: () {
-                      setState(() {
-                        isButtonPressed[1] = !isButtonPressed[1];
-                      });
-                    },
-                    child: Text(listaDeMensagens[1].join('\n')),
-                  ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            !isButtonPressed[2] ? Colors.grey : Colors.green),
-                    onPressed: () {
-                      setState(() {
-                        isButtonPressed[2] = !isButtonPressed[2];
-                      });
-                    },
-                    child: Text(listaDeMensagens[2].join('\n')),
-                  ),
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              !isButtonPressed[3] ? Colors.grey : Colors.red),
-                      onPressed: () {
-                        setState(() {
-                          isButtonPressed[3] = !isButtonPressed[3];
-                        });
-                      },
-                      child: Text(listaDeMensagens[3].join('\n')))
-                ]),
+                  _buildMessageCard(0, listaDeMensagens[0], Colors.red),
+                  _buildMessageCard(1, listaDeMensagens[1], Colors.red),
+                  _buildMessageCard(2, listaDeMensagens[2], Colors.green),
+                  _buildMessageCard(3, listaDeMensagens[3], Colors.red),
+                ],
+              ),
+            ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildMessageCard(
+      int index, List<String> message, Color correctColor) {
+    return Card(
+      elevation: 2,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      color:
+          isButtonPressed[index] ? correctColor.withOpacity(0.2) : Colors.white,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(12),
+        onTap: () {
+          setState(() {
+            isButtonPressed[index] = !isButtonPressed[index];
+          });
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Mensagem ${index + 1}",
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 16),
+                  ),
+                  isButtonPressed[index]
+                      ? Icon(Icons.check_circle, color: correctColor)
+                      : const Icon(Icons.circle_outlined, color: Colors.grey),
+                ],
+              ),
+              const Divider(),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Text(
+                    message.join('\n'),
+                    style: const TextStyle(fontSize: 14),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
