@@ -57,48 +57,114 @@ class CardDetailsScreen extends StatelessWidget {
         ]
       },
     ];
+
+    final String titulo = [
+      'Golpes Bancários',
+      'Phishing',
+      'Falsificação de Sites',
+      'Fraudes em Compras Online'
+    ][cardIndex];
+    const Color cardColor = Color(0xFF1A365D);
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(['Golpes Bancários', 'Phishing', 'Falsificação de Sites', 'Fraudes em Compras Online'][cardIndex]),
+        title: Text(titulo),
+        elevation: 0,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Align(
-          alignment: Alignment.topCenter,
-          child: SingleChildScrollView(
+      body: Column(
+        children: [
+          // Cabeçalho com cor e ícone
+          Container(
+            width: double.infinity,
+            color: cardColor.withOpacity(0.2),
+            padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
-                for (final cardText in detalhesCartoes[cardIndex]['textos'])
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 20),
-                    child: RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: cardText['header'] + '\n',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                              color: Theme.of(context).textTheme.bodyLarge?.color,
-                            ),
-                          ),
-                          ...cardText['body'].map<TextSpan>((item) => TextSpan(
-                            text: '• $item\n',
-                            style: TextStyle(
-                              fontWeight: FontWeight.normal,
-                              fontSize: 16,
-                              color: Theme.of(context).textTheme.bodyMedium?.color,
-                            ),
-                          )).toList(),
-                        ],
-                      ),
-                    ),
+                Icon(
+                  [
+                    Icons.account_balance,
+                    Icons.phishing,
+                    Icons.web,
+                    Icons.shopping_cart
+                  ][cardIndex],
+                  size: 60,
+                  color: cardColor,
+                ),
+                const SizedBox(height: 12),
+                Text(
+                  titulo,
+                  style: const TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
                   ),
-                const SizedBox(height: 20),
+                ),
               ],
             ),
           ),
-        ),
+          // Conteúdo
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    for (final cardText in detalhesCartoes[cardIndex]['textos'])
+                      Card(
+                        elevation: 2,
+                        margin: const EdgeInsets.only(bottom: 20),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          side: BorderSide(
+                              color: cardColor.withOpacity(0.3), width: 1),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                cardText['header'],
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                  color: cardColor,
+                                ),
+                              ),
+                              const SizedBox(height: 12),
+                              ...cardText['body']
+                                  .map<Widget>((item) => Padding(
+                                        padding:
+                                            const EdgeInsets.only(bottom: 8.0),
+                                        child: Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Icon(Icons.check_circle,
+                                                size: 18, color: cardColor),
+                                            const SizedBox(width: 8),
+                                            Expanded(
+                                              child: Text(
+                                                item,
+                                                style: const TextStyle(
+                                                  fontSize: 16,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ))
+                                  .toList(),
+                            ],
+                          ),
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

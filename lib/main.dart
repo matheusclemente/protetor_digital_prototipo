@@ -35,7 +35,7 @@ class App extends StatelessWidget {
           background: Colors.white,
         ),
         scaffoldBackgroundColor: Colors.white,
-        appBarTheme: AppBarTheme(
+        appBarTheme: const AppBarTheme(
           backgroundColor: primaryColor,
           foregroundColor: Colors.white,
           iconTheme: IconThemeData(color: Colors.white),
@@ -95,12 +95,14 @@ class OnBoardingPageState extends State<OnBoardingPage> {
       pages: [
         PageViewModel(
           title: 'Proteção Contra Golpes',
-          body: 'Aprenda a identificar e prevenir os principais tipos de golpes digitais',
+          body:
+              'Aprenda a identificar e prevenir os principais tipos de golpes digitais',
           decoration: pageDecoration,
         ),
         PageViewModel(
           title: 'Checklists de Segurança',
-          body: 'Verifique se está seguindo todas as práticas recomendadas de segurança',
+          body:
+              'Verifique se está seguindo todas as práticas recomendadas de segurança',
           decoration: pageDecoration,
         ),
         PageViewModel(
@@ -154,7 +156,7 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Digital Shield'),
+        title: const Text('Protetor Digital'),
       ),
       body: Column(
         children: [
@@ -163,21 +165,18 @@ class MainScreen extends StatelessWidget {
             padding: const EdgeInsets.all(8),
             child: Column(
               children: [
-                Text(
-                  'Stay safe online',
+                const Text(
+                  'Segurança online',
                   style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold
-                  ),
+                      color: Colors.white,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 8),
                 Text(
                   'Aprenda a se proteger de golpes digitais',
                   style: TextStyle(
-                    color: Colors.white.withOpacity(0.9),
-                    fontSize: 16
-                  ),
+                      color: Colors.white.withOpacity(0.9), fontSize: 16),
                   textAlign: TextAlign.center,
                 ),
               ],
@@ -188,34 +187,43 @@ class MainScreen extends StatelessWidget {
               padding: const EdgeInsets.all(8),
               child: GridView.count(
                 crossAxisCount: 2,
-                childAspectRatio: 0.85,
+                childAspectRatio: 0.75,
                 mainAxisSpacing: 12,
                 crossAxisSpacing: 12,
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 children: [
                   _buildFeatureCard(
                     context,
                     Icons.article,
                     'Cartões Educativos',
-                    () => Navigator.push(context, MaterialPageRoute(builder: (_) => const CardsScreen())),
+                    () => Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => const CardsScreen())),
                   ),
                   _buildFeatureCard(
                     context,
                     Icons.checklist,
                     'Checklists',
-                    () => Navigator.push(context, MaterialPageRoute(builder: (_) => const ChecklistScreen())),
+                    () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => const ChecklistScreen())),
                   ),
                   _buildFeatureCard(
                     context,
                     Icons.analytics,
                     'Analisador de Mensagens',
-                    () => Navigator.push(context, MaterialPageRoute(builder: (_) => const MessageAnalyzerScreen())),
+                    () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => const MessageAnalyzerScreen())),
                   ),
                   _buildFeatureCard(
                     context,
                     Icons.link,
-                    'Sites Úteis',
-                    () => Navigator.push(context, MaterialPageRoute(builder: (_) => UsefulLinksScreen())),
+                    'Recursos Úteis',
+                    () => Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => UsefulLinksScreen())),
                   ),
                 ],
               ),
@@ -226,7 +234,8 @@ class MainScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildFeatureCard(BuildContext context, IconData icon, String title, VoidCallback onTap) {
+  Widget _buildFeatureCard(
+      BuildContext context, IconData icon, String title, VoidCallback onTap) {
     return Card(
       elevation: 2,
       child: InkWell(
@@ -243,20 +252,16 @@ class MainScreen extends StatelessWidget {
               Text(
                 title,
                 style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                  color: Theme.of(context).primaryColor
-                ),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: Theme.of(context).primaryColor),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 8),
               Text(
                 _getDescription(title),
                 style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.grey[600],
-                  height: 1.4
-                ),
+                    fontSize: 14, color: Colors.grey[600], height: 1.4),
                 textAlign: TextAlign.center,
               ),
             ],
@@ -274,7 +279,7 @@ class MainScreen extends StatelessWidget {
         return 'Verifique se está seguindo todas as práticas recomendadas de segurança';
       case 'Analisador de Mensagens':
         return 'Analise mensagens em busca de padrões suspeitos';
-      case 'Sites Úteis':
+      case 'Recursos Úteis':
         return 'Obtenha ajuda quando necessário';
       default:
         return '';
