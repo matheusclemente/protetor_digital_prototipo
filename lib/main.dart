@@ -187,7 +187,7 @@ class MainScreen extends StatelessWidget {
               padding: const EdgeInsets.all(8),
               child: GridView.count(
                 crossAxisCount: 2,
-                childAspectRatio: 0.85,
+                childAspectRatio: 0.75,
                 mainAxisSpacing: 12,
                 crossAxisSpacing: 12,
                 padding:
@@ -221,7 +221,7 @@ class MainScreen extends StatelessWidget {
                   _buildFeatureCard(
                     context,
                     Icons.link,
-                    'Sites Úteis',
+                    'Recursos Úteis',
                     () => Navigator.push(context,
                         MaterialPageRoute(builder: (_) => UsefulLinksScreen())),
                   ),
@@ -279,7 +279,7 @@ class MainScreen extends StatelessWidget {
         return 'Verifique se está seguindo todas as práticas recomendadas de segurança';
       case 'Analisador de Mensagens':
         return 'Analise mensagens em busca de padrões suspeitos';
-      case 'Sites Úteis':
+      case 'Recursos Úteis':
         return 'Obtenha ajuda quando necessário';
       default:
         return '';
