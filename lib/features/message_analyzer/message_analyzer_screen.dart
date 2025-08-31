@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'dart:io';
+import 'package:device_info_plus/device_info_plus.dart';
 
 class MessageAnalyzerScreen extends StatefulWidget {
   const MessageAnalyzerScreen({super.key});
@@ -14,6 +16,36 @@ class _MessageAnalyzerScreenState extends State<MessageAnalyzerScreen> {
   double? _probability;
   String? _error;
   bool _isAnalyzing = false;
+  final DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+  String apiDefaultUrl = 'http://localhost:5000';
+
+  @override
+  void initState() {
+    super.initState();
+    _detectEmulator();
+  }
+
+  Future<void> _detectEmulator() async {
+    try {
+      if (Platform.isAndroid) {
+        final androidInfo = await deviceInfo.androidInfo;
+        final isEmulator = !androidInfo.isPhysicalDevice;
+
+        if (isEmulator) {
+          // No emulador Android, use 10.0.2.2 para acessar o localhost da máquina host
+          setState(() {
+            apiDefaultUrl = 'http://10.0.2.2:5000';
+          });
+          print('Rodando em emulador Android, usando URL: $apiDefaultUrl');
+        } else {
+          print(
+              'Rodando em dispositivo físico Android, usando URL: $apiDefaultUrl');
+        }
+      }
+    } catch (e) {
+      print('Erro ao detectar emulador: $e');
+    }
+  }
 
   Future<void> _checkMessage() async {
     if (_controller.text.trim().isEmpty) {
@@ -30,7 +62,7 @@ class _MessageAnalyzerScreenState extends State<MessageAnalyzerScreen> {
 
     try {
       final response = await http.post(
-        Uri.parse('http://localhost:5000/predict'),
+        Uri.parse('$apiDefaultUrl/predict'),
         body: jsonEncode({'message': _controller.text}),
         headers: {'Content-Type': 'application/json'},
       );
