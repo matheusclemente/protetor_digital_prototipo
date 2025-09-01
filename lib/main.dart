@@ -73,8 +73,8 @@ class OnBoardingPageState extends State<OnBoardingPage> {
   @override
   Widget build(BuildContext context) {
     const pageDecoration = PageDecoration(
-      titleTextStyle: TextStyle(fontSize: 28.0, fontWeight: FontWeight.w700),
-      bodyTextStyle: TextStyle(fontSize: 19.0),
+      titleTextStyle: TextStyle(fontSize: 32.0, fontWeight: FontWeight.w700),
+      bodyTextStyle: TextStyle(fontSize: 22.0),
       bodyPadding: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
       pageColor: Colors.white,
       imagePadding: EdgeInsets.zero,
@@ -95,24 +95,22 @@ class OnBoardingPageState extends State<OnBoardingPage> {
       pages: [
         PageViewModel(
           title: 'Proteção Contra Golpes',
-          body:
-              'Aprenda a identificar e prevenir os principais tipos de golpes digitais',
+          body: 'Aprenda a reconhecer e evitar golpes online',
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: 'Checklists de Segurança',
-          body:
-              'Verifique se está seguindo todas as práticas recomendadas de segurança',
+          title: 'Listas de Segurança',
+          body: 'Confira se você está protegido seguindo dicas simples',
           decoration: pageDecoration,
         ),
         PageViewModel(
           title: 'Análise de Mensagens',
-          body: 'Verifique automaticamente mensagens suspeitas recebidas',
+          body: 'Descubra se uma mensagem pode ser perigosa',
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: 'Recursos Úteis',
-          body: 'Acesso rápido a canais de denúncia e suporte especializado',
+          title: 'Ajuda Rápida',
+          body: 'Encontre onde pedir ajuda quando precisar',
           decoration: pageDecoration,
         ),
       ],
@@ -123,9 +121,9 @@ class OnBoardingPageState extends State<OnBoardingPage> {
       showBackButton: false,
       baseBtnStyle: ElevatedButton.styleFrom(
           foregroundColor: Colors.white, backgroundColor: primaryColor),
-      next: const Text("Próximo"),
+      next: const Text("Próximo", style: TextStyle(fontSize: 18.0)),
       done: const Text('Vamos começar!',
-          style: TextStyle(fontWeight: FontWeight.w600)),
+          style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0)),
       curve: Curves.fastLinearToSlowEaseIn,
       controlsMargin: const EdgeInsets.all(16),
       controlsPadding: kIsWeb
@@ -156,27 +154,27 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Protetor Digital'),
+        title: const Text('Protetor Digital', style: TextStyle(fontSize: 22.0)),
       ),
       body: Column(
         children: [
           Container(
             color: Theme.of(context).primaryColor,
-            padding: const EdgeInsets.all(8),
+            padding: const EdgeInsets.all(12),
             child: Column(
               children: [
                 const Text(
                   'Segurança online',
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 24,
+                      fontSize: 28,
                       fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 10),
                 Text(
                   'Aprenda a se proteger de golpes digitais',
                   style: TextStyle(
-                      color: Colors.white.withOpacity(0.9), fontSize: 16),
+                      color: Colors.white.withOpacity(0.9), fontSize: 20),
                   textAlign: TextAlign.center,
                 ),
               ],
@@ -187,7 +185,7 @@ class MainScreen extends StatelessWidget {
               padding: const EdgeInsets.all(8),
               child: GridView.count(
                 crossAxisCount: 2,
-                childAspectRatio: 0.75,
+                childAspectRatio: 0.65,
                 mainAxisSpacing: 12,
                 crossAxisSpacing: 12,
                 padding:
@@ -203,7 +201,7 @@ class MainScreen extends StatelessWidget {
                   _buildFeatureCard(
                     context,
                     Icons.checklist,
-                    'Checklists',
+                    'Listas de Proteção',
                     () => Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -212,7 +210,7 @@ class MainScreen extends StatelessWidget {
                   _buildFeatureCard(
                     context,
                     Icons.analytics,
-                    'Analisador de Mensagens',
+                    'Verificador de Mensagens',
                     () => Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -221,7 +219,7 @@ class MainScreen extends StatelessWidget {
                   _buildFeatureCard(
                     context,
                     Icons.link,
-                    'Recursos Úteis',
+                    'Contatos Úteis',
                     () => Navigator.push(context,
                         MaterialPageRoute(builder: (_) => UsefulLinksScreen())),
                   ),
@@ -243,16 +241,16 @@ class MainScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
         hoverColor: Colors.grey.withOpacity(0.1),
         child: Padding(
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(10),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(icon, size: 40, color: Theme.of(context).primaryColor),
-              const SizedBox(height: 12),
+              Icon(icon, size: 44, color: Theme.of(context).primaryColor),
+              const SizedBox(height: 10),
               Text(
                 title,
                 style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 20,
                     fontWeight: FontWeight.w600,
                     color: Theme.of(context).primaryColor),
                 textAlign: TextAlign.center,
@@ -261,8 +259,10 @@ class MainScreen extends StatelessWidget {
               Text(
                 _getDescription(title),
                 style: TextStyle(
-                    fontSize: 14, color: Colors.grey[600], height: 1.4),
+                    fontSize: 16, color: Colors.grey[600], height: 1.3),
                 textAlign: TextAlign.center,
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
               ),
             ],
           ),
@@ -274,12 +274,12 @@ class MainScreen extends StatelessWidget {
   String _getDescription(String title) {
     switch (title) {
       case 'Cartões Educativos':
-        return 'Aprenda sobre golpes comuns';
-      case 'Checklists':
-        return 'Verifique se está seguindo todas as práticas recomendadas de segurança';
-      case 'Analisador de Mensagens':
-        return 'Analise mensagens em busca de padrões suspeitos';
-      case 'Recursos Úteis':
+        return 'Conheça os golpes mais comuns';
+      case 'Listas de Proteção':
+        return 'Veja se você está seguindo as dicas de segurança';
+      case 'Verificador de Mensagens':
+        return 'Descubra se uma mensagem pode ser um golpe';
+      case 'Contatos Úteis':
         return 'Obtenha ajuda quando necessário';
       default:
         return '';
