@@ -36,16 +36,16 @@ class CardsScreen extends StatelessWidget {
     const cardColor = Color(0xFF1A365D);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Golpes Comuns'),
+        title: const Text('Golpes Comuns', style: TextStyle(fontSize: 22.0)),
         elevation: 0,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: const EdgeInsets.all(16.0),
         child: ListView.builder(
           itemCount: cards.length,
           itemBuilder: (BuildContext context, int index) {
             return Card(
-              margin: const EdgeInsets.only(bottom: 16),
+              margin: const EdgeInsets.only(bottom: 20),
               elevation: 2,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12)),
@@ -60,11 +60,11 @@ class CardsScreen extends StatelessWidget {
                   );
                 },
                 child: Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(20.0),
                   child: Row(
                     children: [
                       Container(
-                        padding: const EdgeInsets.all(12),
+                        padding: const EdgeInsets.all(14),
                         decoration: BoxDecoration(
                           color: cardColor.withOpacity(0.2),
                           borderRadius: BorderRadius.circular(8),
@@ -72,10 +72,10 @@ class CardsScreen extends StatelessWidget {
                         child: Icon(
                           cards[index]['icon'],
                           color: cardColor,
-                          size: 32,
+                          size: 40,
                         ),
                       ),
-                      const SizedBox(width: 16),
+                      const SizedBox(width: 20),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,22 +83,22 @@ class CardsScreen extends StatelessWidget {
                             Text(
                               cards[index]['title'],
                               style: const TextStyle(
-                                fontSize: 18,
+                                fontSize: 22,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            const SizedBox(height: 4),
+                            const SizedBox(height: 6),
                             Text(
                               cards[index]['description'],
                               style: TextStyle(
-                                fontSize: 14,
+                                fontSize: 18,
                                 color: Colors.grey[600],
                               ),
                             ),
                           ],
                         ),
                       ),
-                      const Icon(Icons.arrow_forward_ios, size: 16),
+                      const Icon(Icons.arrow_forward_ios, color: cardColor),
                     ],
                   ),
                 ),

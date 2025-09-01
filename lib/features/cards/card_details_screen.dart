@@ -68,7 +68,7 @@ class CardDetailsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(titulo),
+        title: Text(titulo, style: const TextStyle(fontSize: 22.0)),
         elevation: 0,
       ),
       body: Column(
@@ -77,7 +77,7 @@ class CardDetailsScreen extends StatelessWidget {
           Container(
             width: double.infinity,
             color: cardColor.withOpacity(0.2),
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(20.0),
             child: Column(
               children: [
                 Icon(
@@ -87,14 +87,14 @@ class CardDetailsScreen extends StatelessWidget {
                     Icons.web,
                     Icons.shopping_cart
                   ][cardIndex],
-                  size: 60,
+                  size: 70,
                   color: cardColor,
                 ),
-                const SizedBox(height: 12),
+                const SizedBox(height: 16),
                 Text(
                   titulo,
                   style: const TextStyle(
-                    fontSize: 24,
+                    fontSize: 28,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -104,7 +104,7 @@ class CardDetailsScreen extends StatelessWidget {
           // Conteúdo
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(24.0),
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -112,42 +112,42 @@ class CardDetailsScreen extends StatelessWidget {
                     for (final cardText in detalhesCartoes[cardIndex]['textos'])
                       Card(
                         elevation: 2,
-                        margin: const EdgeInsets.only(bottom: 20),
+                        margin: const EdgeInsets.only(bottom: 24),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                           side: BorderSide(
                               color: cardColor.withOpacity(0.3), width: 1),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(16.0),
+                          padding: const EdgeInsets.all(20.0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 cardText['header'],
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 20,
+                                  fontSize: 24,
                                   color: cardColor,
                                 ),
                               ),
-                              const SizedBox(height: 12),
+                              const SizedBox(height: 16),
                               ...cardText['body']
                                   .map<Widget>((item) => Padding(
                                         padding:
-                                            const EdgeInsets.only(bottom: 8.0),
+                                            const EdgeInsets.only(bottom: 12.0),
                                         child: Row(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            Icon(Icons.check_circle,
-                                                size: 18, color: cardColor),
-                                            const SizedBox(width: 8),
+                                            const Icon(Icons.check_circle,
+                                                size: 22, color: cardColor),
+                                            const SizedBox(width: 10),
                                             Expanded(
                                               child: Text(
                                                 item,
                                                 style: const TextStyle(
-                                                  fontSize: 16,
+                                                  fontSize: 20,
                                                 ),
                                               ),
                                             ),
