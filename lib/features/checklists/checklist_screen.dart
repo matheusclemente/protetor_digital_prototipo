@@ -9,7 +9,7 @@ class ChecklistScreen extends StatelessWidget {
     SafeMessageChecklistScreen(checklistIndex: 0),
     SafeLinkChecklistScreen()
   ];
-  
+
   static const List<Map<String, dynamic>> checklistData = [
     {
       'title': 'Mensagens Seguras',
@@ -24,12 +24,13 @@ class ChecklistScreen extends StatelessWidget {
       'color': Color(0xFF1A365D),
     },
   ];
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Checklists de Segurança'),
+        title:
+            const Text('Testes de Segurança', style: TextStyle(fontSize: 22.0)),
         elevation: 0,
       ),
       body: Column(
@@ -37,28 +38,28 @@ class ChecklistScreen extends StatelessWidget {
           Container(
             width: double.infinity,
             color: Theme.of(context).primaryColor.withOpacity(0.1),
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(20),
             child: Column(
               children: [
                 const Icon(
                   Icons.security,
-                  size: 48,
+                  size: 56,
                   color: Color(0xFF1A365D),
                 ),
-                const SizedBox(height: 12),
+                const SizedBox(height: 16),
                 const Text(
                   'Verifique sua Segurança',
                   style: TextStyle(
-                    fontSize: 22,
+                    fontSize: 26,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 10),
                 Text(
                   'Complete os checklists para garantir sua proteção digital',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 20,
                     color: Colors.grey[700],
                   ),
                 ),
@@ -67,12 +68,12 @@ class ChecklistScreen extends StatelessWidget {
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(20),
               child: ListView.builder(
                 itemCount: checklistData.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Card(
-                    margin: const EdgeInsets.only(bottom: 16),
+                    margin: const EdgeInsets.only(bottom: 20),
                     elevation: 2,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
@@ -88,22 +89,23 @@ class ChecklistScreen extends StatelessWidget {
                         );
                       },
                       child: Padding(
-                        padding: const EdgeInsets.all(16),
+                        padding: const EdgeInsets.all(20),
                         child: Row(
                           children: [
                             Container(
-                              padding: const EdgeInsets.all(12),
+                              padding: const EdgeInsets.all(14),
                               decoration: BoxDecoration(
-                                color: checklistData[index]['color'].withOpacity(0.2),
+                                color: checklistData[index]['color']
+                                    .withOpacity(0.2),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: Icon(
                                 checklistData[index]['icon'],
                                 color: checklistData[index]['color'],
-                                size: 32,
+                                size: 40,
                               ),
                             ),
-                            const SizedBox(width: 16),
+                            const SizedBox(width: 20),
                             Expanded(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -111,22 +113,22 @@ class ChecklistScreen extends StatelessWidget {
                                   Text(
                                     checklistData[index]['title'],
                                     style: const TextStyle(
-                                      fontSize: 18,
+                                      fontSize: 22,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                  const SizedBox(height: 4),
+                                  const SizedBox(height: 6),
                                   Text(
                                     checklistData[index]['description'],
                                     style: TextStyle(
-                                      fontSize: 14,
+                                      fontSize: 18,
                                       color: Colors.grey[600],
                                     ),
                                   ),
                                 ],
                               ),
                             ),
-                            const Icon(Icons.arrow_forward_ios, size: 16),
+                            const Icon(Icons.arrow_forward_ios, size: 20),
                           ],
                         ),
                       ),

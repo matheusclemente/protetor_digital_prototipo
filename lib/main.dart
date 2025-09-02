@@ -202,7 +202,7 @@ class MainScreen extends StatelessWidget {
                   _buildFeatureCard(
                     context,
                     Icons.checklist,
-                    'Listas de Proteção',
+                    'Testes de Segurança',
                     () => Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -276,7 +276,7 @@ class MainScreen extends StatelessWidget {
     switch (title) {
       case 'Cartões Educativos':
         return 'Conheça os golpes mais comuns';
-      case 'Listas de Proteção':
+      case 'Testes de Segurança':
         return 'Veja se você está seguindo as dicas de segurança';
       case 'Verificador de Mensagens':
         return 'Descubra se uma mensagem pode ser um golpe';

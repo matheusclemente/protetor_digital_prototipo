@@ -52,9 +52,17 @@ class _SafeMessageChecklistScreenState
         'Equipe Financeira],',
       ]
     ];
+
+    final List corMensagem = [
+      Colors.red,
+      Colors.red,
+      Colors.green,
+      Colors.red,
+    ];
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Mensagens Seguras"),
+        title:
+            const Text("Mensagens Seguras", style: TextStyle(fontSize: 22.0)),
         elevation: 0,
       ),
       body: Column(
@@ -62,22 +70,22 @@ class _SafeMessageChecklistScreenState
           Container(
             width: double.infinity,
             color: Theme.of(context).primaryColor.withOpacity(0.1),
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(20),
             child: Column(
               children: [
                 const Text(
                   "Identifique a mensagem segura",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 22,
+                    fontSize: 26,
                   ),
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 10),
                 Text(
                   "Selecione a mensagem que você considera segura",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 20,
                     color: Colors.grey[700],
                   ),
                 ),
@@ -86,18 +94,16 @@ class _SafeMessageChecklistScreenState
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: GridView.count(
-                crossAxisCount: 2,
-                childAspectRatio: 0.85,
-                mainAxisSpacing: 16,
-                crossAxisSpacing: 16,
-                children: [
-                  _buildMessageCard(0, listaDeMensagens[0], Colors.red),
-                  _buildMessageCard(1, listaDeMensagens[1], Colors.red),
-                  _buildMessageCard(2, listaDeMensagens[2], Colors.green),
-                  _buildMessageCard(3, listaDeMensagens[3], Colors.red),
-                ],
+              padding: const EdgeInsets.all(20),
+              child: ListView.builder(
+                itemCount: listaDeMensagens.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 16),
+                    child: _buildMessageCard(
+                        index, listaDeMensagens[index], corMensagem[index]),
+                  );
+                },
               ),
             ),
           ),
@@ -121,7 +127,7 @@ class _SafeMessageChecklistScreenState
           });
         },
         child: Padding(
-          padding: const EdgeInsets.all(12),
+          padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -131,19 +137,20 @@ class _SafeMessageChecklistScreenState
                   Text(
                     "Mensagem ${index + 1}",
                     style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 16),
+                        fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                   isButtonPressed[index]
-                      ? Icon(Icons.check_circle, color: correctColor)
-                      : const Icon(Icons.circle_outlined, color: Colors.grey),
+                      ? Icon(Icons.check_circle, color: correctColor, size: 24)
+                      : const Icon(Icons.circle_outlined,
+                          color: Colors.grey, size: 24),
                 ],
               ),
               const Divider(),
-              Expanded(
+              SizedBox(
                 child: SingleChildScrollView(
                   child: Text(
                     message.join('\n'),
-                    style: const TextStyle(fontSize: 14),
+                    style: const TextStyle(fontSize: 18),
                   ),
                 ),
               ),

@@ -27,7 +27,8 @@ class _SafeLinkChecklistScreenState extends State<SafeLinkChecklistScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Links Seguros"),
+        title: const Text("Links Seguros",
+            style: TextStyle(fontSize: 22.0)), // Aumentado tamanho da fonte
         elevation: 0,
       ),
       body: Column(
@@ -35,22 +36,22 @@ class _SafeLinkChecklistScreenState extends State<SafeLinkChecklistScreen> {
           Container(
             width: double.infinity,
             color: Theme.of(context).primaryColor.withOpacity(0.1),
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(20), // Aumentado de 16 para 20
             child: Column(
               children: [
                 const Text(
                   "Identifique o link seguro",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 22,
+                    fontSize: 26, // Aumentado de 22 para 26
                   ),
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 10), // Aumentado de 8 para 10
                 Text(
                   "Selecione o link que você considera seguro",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 20, // Aumentado de 16 para 20
                     color: Colors.grey[700],
                   ),
                 ),
@@ -59,12 +60,13 @@ class _SafeLinkChecklistScreenState extends State<SafeLinkChecklistScreen> {
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(20), // Aumentado de 16 para 20
               child: ListView.builder(
                 itemCount: listaDeLinks.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Card(
-                    margin: const EdgeInsets.only(bottom: 16),
+                    margin: const EdgeInsets.only(
+                        bottom: 20), // Aumentado de 16 para 20
                     elevation: 2,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12)),
@@ -79,26 +81,10 @@ class _SafeLinkChecklistScreenState extends State<SafeLinkChecklistScreen> {
                         });
                       },
                       child: Padding(
-                        padding: const EdgeInsets.all(16),
+                        padding: const EdgeInsets.all(20),
                         child: Row(
                           children: [
-                            Container(
-                              padding: const EdgeInsets.all(12),
-                              decoration: BoxDecoration(
-                                color: isButtonPressed[index]
-                                    ? pressedButtonColor[index].withOpacity(0.2)
-                                    : Colors.grey.withOpacity(0.2),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Icon(
-                                Icons.link,
-                                color: isButtonPressed[index]
-                                    ? pressedButtonColor[index]
-                                    : Colors.grey,
-                                size: 24,
-                              ),
-                            ),
-                            const SizedBox(width: 16),
+                            const SizedBox(width: 20),
                             Expanded(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -106,23 +92,23 @@ class _SafeLinkChecklistScreenState extends State<SafeLinkChecklistScreen> {
                                   Text(
                                     listaDeLinks[index],
                                     style: const TextStyle(
-                                      fontSize: 16,
+                                      fontSize: 20,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                  const SizedBox(height: 4),
+                                  const SizedBox(height: 6),
                                   isButtonPressed[index]
                                       ? Text(
                                           linkDescriptions[index],
                                           style: TextStyle(
-                                            fontSize: 14,
+                                            fontSize: 18,
                                             color: pressedButtonColor[index],
                                           ),
                                         )
                                       : const Text(
                                           "Clique para selecionar",
                                           style: TextStyle(
-                                            fontSize: 14,
+                                            fontSize: 18,
                                             color: Colors.grey,
                                           ),
                                         ),
@@ -135,9 +121,10 @@ class _SafeLinkChecklistScreenState extends State<SafeLinkChecklistScreen> {
                                         ? Icons.check_circle
                                         : Icons.cancel,
                                     color: pressedButtonColor[index],
+                                    size: 28,
                                   )
                                 : const Icon(Icons.circle_outlined,
-                                    color: Colors.grey),
+                                    color: Colors.grey, size: 28),
                           ],
                         ),
                       ),
