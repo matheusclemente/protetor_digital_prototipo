@@ -96,7 +96,8 @@ class _MessageAnalyzerScreenState extends State<MessageAnalyzerScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Analisador de Mensagens'),
+        title: const Text('Verificador de Mensagens',
+            style: TextStyle(fontSize: 22.0)),
         elevation: 0,
       ),
       body: Column(
@@ -105,27 +106,20 @@ class _MessageAnalyzerScreenState extends State<MessageAnalyzerScreen> {
           Container(
             width: double.infinity,
             color: primaryColor.withOpacity(0.2),
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(20.0),
             child: const Column(
               children: [
                 Icon(
                   Icons.security,
-                  size: 60,
+                  size: 70,
                   color: primaryColor,
                 ),
-                SizedBox(height: 12),
-                Text(
-                  'Verificador de Phishing',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 8),
+                SizedBox(height: 16),
+                SizedBox(height: 10),
                 Text(
                   'Cole a mensagem suspeita para verificar se é uma tentativa de phishing',
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 24,
                     color: Colors.black87,
                   ),
                   textAlign: TextAlign.center,
@@ -136,14 +130,14 @@ class _MessageAnalyzerScreenState extends State<MessageAnalyzerScreen> {
           // Conteúdo
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(24.0),
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Card(
                       elevation: 2,
-                      margin: const EdgeInsets.only(bottom: 20),
+                      margin: const EdgeInsets.only(bottom: 24),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                         side: BorderSide(
@@ -152,25 +146,26 @@ class _MessageAnalyzerScreenState extends State<MessageAnalyzerScreen> {
                         ),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(16.0),
+                        padding: const EdgeInsets.all(20.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Row(
                               children: [
-                                Icon(Icons.message, color: primaryColor),
-                                SizedBox(width: 8),
+                                Icon(Icons.message,
+                                    color: primaryColor, size: 28),
+                                SizedBox(width: 10),
                                 Text(
                                   'Mensagem para análise:',
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 18,
+                                    fontSize: 22,
                                     color: primaryColor,
                                   ),
                                 ),
                               ],
                             ),
-                            const SizedBox(height: 16),
+                            const SizedBox(height: 20),
                             SizedBox(
                               height: 200,
                               child: TextField(
@@ -178,17 +173,19 @@ class _MessageAnalyzerScreenState extends State<MessageAnalyzerScreen> {
                                 keyboardType: TextInputType.multiline,
                                 maxLines: null,
                                 expands: true,
+                                style: const TextStyle(fontSize: 18),
                                 decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                   hintText: 'Cole aqui a mensagem suspeita...',
+                                  hintStyle: const TextStyle(fontSize: 18),
                                   fillColor: Colors.grey[50],
                                   filled: true,
                                 ),
                               ),
                             ),
-                            const SizedBox(height: 16),
+                            const SizedBox(height: 20),
                             SizedBox(
                               width: double.infinity,
                               child: ElevatedButton.icon(
@@ -209,8 +206,8 @@ class _MessageAnalyzerScreenState extends State<MessageAnalyzerScreen> {
                                     : "Verificar Mensagem"),
                                 style: ElevatedButton.styleFrom(
                                   padding:
-                                      const EdgeInsets.symmetric(vertical: 12),
-                                  textStyle: const TextStyle(fontSize: 16),
+                                      const EdgeInsets.symmetric(vertical: 16),
+                                  textStyle: const TextStyle(fontSize: 18),
                                 ),
                               ),
                             ),
