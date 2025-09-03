@@ -19,7 +19,7 @@ class UsefulLinksScreen extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  'Contatos de Emergência',
+                  'Quem Chamar',
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                         color: Colors.white,
                         fontSize: 26,
@@ -27,7 +27,7 @@ class UsefulLinksScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  'Obtenha ajuda quando necessário',
+                  'Ligue quando precisar de ajuda',
                   style: TextStyle(
                       color: Colors.white.withOpacity(0.9), fontSize: 20),
                 ),
@@ -116,9 +116,9 @@ class UsefulLinksScreen extends StatelessWidget {
                     ),
               ),
               const SizedBox(height: 10),
-              _buildReminderItem('• Aja rapidamente se for vítima de golpe'),
-              _buildReminderItem('• Contate seu banco imediatamente'),
-              _buildReminderItem('• Mantenha registros das comunicações'),
+              _buildReminderItem('Se cair em golpe, aja rápido'),
+              _buildReminderItem('Ligue para seu banco na hora'),
+              _buildReminderItem('Guarde todas as mensagens e e-mails'),
             ],
           ),
         ),
