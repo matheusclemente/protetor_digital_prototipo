@@ -40,7 +40,7 @@ class _SafeLinkChecklistScreenState extends State<SafeLinkChecklistScreen> {
             child: Column(
               children: [
                 const Text(
-                  "Identifique o link seguro",
+                  "Encontre o link seguro",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 26, // Aumentado de 22 para 26
@@ -48,7 +48,7 @@ class _SafeLinkChecklistScreenState extends State<SafeLinkChecklistScreen> {
                 ),
                 const SizedBox(height: 10), // Aumentado de 8 para 10
                 Text(
-                  "Selecione o link que você considera seguro",
+                  "Clique no link que pareça seguro",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20, // Aumentado de 16 para 20

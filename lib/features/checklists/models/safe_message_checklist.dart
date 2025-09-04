@@ -74,7 +74,7 @@ class _SafeMessageChecklistScreenState
             child: Column(
               children: [
                 const Text(
-                  "Identifique a mensagem segura",
+                  "Encontre a mensagem segura",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 26,
@@ -82,7 +82,7 @@ class _SafeMessageChecklistScreenState
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  "Selecione a mensagem que você considera segura",
+                  "Clique na mensagem que pareça segura",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20,

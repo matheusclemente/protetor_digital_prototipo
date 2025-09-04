@@ -12,15 +12,16 @@ class ChecklistScreen extends StatelessWidget {
 
   static const List<Map<String, dynamic>> checklistData = [
     {
-      'title': 'Mensagens Seguras',
+      'title': 'Cuidado com Mensagens',
       'icon': Icons.message,
-      'description': 'Aprenda a identificar mensagens seguras e fraudulentas',
+      'description':
+          'Aprenda a reconhecer se uma mensagem é verdadeira ou golpe',
       'color': Color(0xFF1A365D),
     },
     {
-      'title': 'Links Seguros',
+      'title': 'Cuidado com Links',
       'icon': Icons.link,
-      'description': 'Verifique se os links são confiáveis antes de clicar',
+      'description': 'Aprenda a reconhecer links de confiança antes de clicar',
       'color': Color(0xFF1A365D),
     },
   ];
@@ -48,7 +49,7 @@ class ChecklistScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 const Text(
-                  'Verifique sua Segurança',
+                  'Como está sua segurança?',
                   style: TextStyle(
                     fontSize: 26,
                     fontWeight: FontWeight.bold,
@@ -56,7 +57,7 @@ class ChecklistScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  'Complete os checklists para garantir sua proteção digital',
+                  'Complete os testes e fique mais seguro na internet',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20,

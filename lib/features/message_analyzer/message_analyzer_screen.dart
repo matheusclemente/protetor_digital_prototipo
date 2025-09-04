@@ -117,7 +117,7 @@ class _MessageAnalyzerScreenState extends State<MessageAnalyzerScreen> {
                 SizedBox(height: 16),
                 SizedBox(height: 10),
                 Text(
-                  'Cole a mensagem suspeita para verificar se é uma tentativa de phishing',
+                  'Cole abaixo a mensagem que pareça suspeita de golpe',
                   style: TextStyle(
                     fontSize: 24,
                     color: Colors.black87,
@@ -178,7 +178,7 @@ class _MessageAnalyzerScreenState extends State<MessageAnalyzerScreen> {
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(8),
                                   ),
-                                  hintText: 'Cole aqui a mensagem suspeita...',
+                                  hintText: 'Cole a mensagem aqui...',
                                   hintStyle: const TextStyle(fontSize: 18),
                                   fillColor: Colors.grey[50],
                                   filled: true,
@@ -202,8 +202,8 @@ class _MessageAnalyzerScreenState extends State<MessageAnalyzerScreen> {
                                       )
                                     : const Icon(Icons.search),
                                 label: Text(_isAnalyzing
-                                    ? "Analisando..."
-                                    : "Verificar Mensagem"),
+                                    ? "Verificando, aguarde..."
+                                    : "Verificar"),
                                 style: ElevatedButton.styleFrom(
                                   padding:
                                       const EdgeInsets.symmetric(vertical: 16),
@@ -285,7 +285,7 @@ class _MessageAnalyzerScreenState extends State<MessageAnalyzerScreen> {
                               ),
                               const SizedBox(height: 8),
                               Text(
-                                'Probabilidade de phishing: ${(_probability! * 100).toStringAsFixed(1)}%',
+                                'Probabilidade de golpe: ${(_probability! * 100).toStringAsFixed(1)}%',
                                 style: TextStyle(
                                   color: _probability! > 0.7
                                       ? Colors.red[700]
@@ -298,8 +298,8 @@ class _MessageAnalyzerScreenState extends State<MessageAnalyzerScreen> {
                               const SizedBox(height: 16),
                               Text(
                                 _probability! > 0.7
-                                    ? 'Esta mensagem tem alta probabilidade de ser uma tentativa de phishing. Tenha cuidado!'
-                                    : 'Esta mensagem parece segura, mas sempre verifique a fonte antes de fornecer informações pessoais.',
+                                    ? 'Cuidado! Esta mensagem tem grande chance de ser golpe.'
+                                    : 'Parece segura, mas confira sempre o remetente antes de passar dados pessoais.',
                                 style: TextStyle(
                                   fontSize: 16,
                                   color: _probability! > 0.7
